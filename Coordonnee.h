@@ -19,6 +19,8 @@ public:
 
     void setY(int y);
 
+    Coordonnee operator+=(const Coordonnee c) const;
+
 private:
     int x;
     int y;

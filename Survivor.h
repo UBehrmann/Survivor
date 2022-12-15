@@ -15,16 +15,28 @@
 #include "Robot.h"
 #include "Terrain.h"
 #include "Coordonnee.h"
+#include "random.h"
 
 class Survivor {
 public:
     Survivor(int largueur, int longueur, int nbreObject);
+
+    void etappe();
 
 private:
     std::vector<Robot> robots;
 
     Terrain terrain;
 
+    Random random;
+
+    bool estOccupe(Coordonnee coordonnee) const;
+
+    Coordonnee coordonneeAleatoir(int largueur, int longueur);
+
+    void controlePosition(const Coordonnee& coordonnee, const Robot& robot);
+
+    void robotAEteTue(const Robot& robotTue, const Robot& robotSurvivant);
 };
 
 
