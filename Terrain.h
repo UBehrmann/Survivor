@@ -22,8 +22,6 @@ class Terrain {
 public:
 
     Terrain(int largeur, int longeur);
-    void affiche(std::vector<Robot>& robots);
-    void initializerTerrain(std::vector<Robot>& robots);
 
     void affiche(std::vector<Robot>& robots) const;
 
@@ -34,11 +32,8 @@ public:
 private:
     int largeur;
     int longeur;
-    void positionRobot(std::string& terrain_ligne, std::vector<Robot>& robots);
-    std::string textFormat(const std::string& strIn);
-    std::string terrain;
 
-
+    std::string ligneTerrain() const;
 };
 
 
