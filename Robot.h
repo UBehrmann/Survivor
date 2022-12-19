@@ -48,14 +48,18 @@ public:
 
     void setCoordonnee(const Coordonnee &coordonnee);
 
-    bool operator!=(const Robot& r) const{ return iD != r.getId(); }
-    bool operator==(const Robot& r) const{ return iD == r.getId(); }
+    bool operator!=(const Robot& r) const{ return this->iD != r.getId(); }
+    bool operator==(const Robot& r) const{ return this->iD == r.getId(); }
+
+    void addEgalite(int nbre){egalite += nbre;}
+    int getEgalite() const{return egalite;};
 
 private:
 
     int iD;
     Coordonnee coordonnee;
 
+    int egalite = 0;
 
 };
 

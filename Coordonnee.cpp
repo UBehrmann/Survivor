@@ -22,6 +22,7 @@ void Coordonnee::setY(int y) {
 
 Coordonnee::Coordonnee(int x, int y) : x(x), y(y) {}
 
-Coordonnee Coordonnee::operator+=(const Coordonnee c) const {
-    return Coordonnee(x + c.x, y + c.y);
+void Coordonnee::operator+=(const Coordonnee c) {
+    x += c.x;
+    y += c.y;
 }

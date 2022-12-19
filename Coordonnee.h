@@ -9,6 +9,8 @@
 class Coordonnee {
 public:
 
+    Coordonnee() : x(0), y(0) {};
+
     Coordonnee(int x, int y);
 
     int getX() const;
@@ -19,7 +21,7 @@ public:
 
     void setY(int y);
 
-    Coordonnee operator+=(const Coordonnee c) const;
+    void operator+=(const Coordonnee c);
 
 private:
     int x;

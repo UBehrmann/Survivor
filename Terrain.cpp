@@ -50,24 +50,25 @@ void Terrain::positionRobot(string& terrain_ligne, vector<Robot>& robots) {
     }
 }
 
-Terrain::Terrain(int largeur, int longeur) : largeur(largeur), longeur(longeur) {}
+Terrain::Terrain(int largeur, int longeur) : largeur(largeur + 1), longeur(longeur + 1) {}
 
 void Terrain::affiche2(std::vector<Robot>& robots){
     string ligne2 = string((size_t)largeur + 2, BORDURE_HORIZONTAL);
-    char start = '0';
+    const char START = '0';
 
     system("cls");
 
     cout << ligne2 << endl;
 
     for (int ligne = 0; ligne <= largeur; ++ligne){
-        ligne2 = string(largeur + 2, ESPACE);
-        ligne2[0] = BORDURE_VERTICAL;
-        ligne2[largeur + 1] = BORDURE_VERTICAL;
+        ligne2.clear();
+        ligne2 += BORDURE_VERTICAL;
+        ligne2 += string((size_t)largeur, ESPACE);
+        ligne2 += BORDURE_VERTICAL;
 
         for (Robot r : robots) {
             if (r.getCoordonnee().getY() == ligne - 1)
-                ligne2.at(r.getCoordonnee().getX()+1) = start + r.getId();
+                ligne2.at(r.getCoordonnee().getX() +1 ) = START + r.getId();
         }
 
         cout << ligne2 << endl;

@@ -24,12 +24,16 @@ public:
 
     void etappe();
 
+    bool fin();
+
 private:
     std::vector<Robot> robots;
 
     Terrain terrain;
 
     Random random;
+
+    std::string deahtList;
 
     bool estOccupe(Coordonnee coordonnee) const;
 

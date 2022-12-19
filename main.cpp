@@ -12,21 +12,24 @@
 #include <iostream>
 #include "Survivor.h"
 #include <limits>               // Utilisation de numeric limits
-#include <thread>
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
 using namespace std;
 
 int main() {
-    Survivor survivor(20, 20, 5);
 
-    while (true){
+    Survivor survivor(10, 10, 10);
+
+    do{
 
         survivor.etappe();
 
-        this_thread::sleep_for(100ms);
-    }
+    }while ( survivor.fin() );
 
-    return 0;
+
+    cout << "Pressez ENTER pour quitter";
+    VIDER_BUFFER;
+
+    return EXIT_SUCCESS;
 }
