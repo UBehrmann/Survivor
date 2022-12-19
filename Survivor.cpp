@@ -10,6 +10,8 @@
 
 #include "Survivor.h"
 #include "Coordonnee.h"
+#include <chrono>
+
 
 using namespace std;
 
@@ -44,8 +46,12 @@ Coordonnee Survivor::coordonneeAleatoir(int largueur, int longueur) {
 
 void Survivor::etappe() {
 
+    // obtain a time-based seed:
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
 
-    Random::melangeRobots(robots);
+    shuffle(robots.begin(), robots.end(), default_random_engine(seed));
+
+    //Random::melangeRobots(robots);
 
     for(Robot r : robots)
         controlePosition(r.deplace(random), r);

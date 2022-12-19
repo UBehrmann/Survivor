@@ -25,11 +25,11 @@ int Random::random(int min, int max) {
     return distr(generator);
 }
 
-void Random::melangeRobots(Robots& robots) {
-
-    // obtain a time-based seed:
-    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
-
-    shuffle(robots.begin(), robots.end(), default_random_engine(seed));
-
-}
+//void Random::melangeRobots(Robots& robots) {
+//
+//    // obtain a time-based seed:
+//    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+//
+//    shuffle(robots.begin(), robots.end(), default_random_engine(seed));
+//
+//}

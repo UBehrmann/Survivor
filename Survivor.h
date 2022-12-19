@@ -12,10 +12,11 @@
 #define SURVIVOR_SURVIVOR_H
 
 #include <vector>
-#include "Robot.h"
 #include "Terrain.h"
 #include "Coordonnee.h"
 #include "random.h"
+#include "Robot.h"
+
 
 class Survivor {
 public:

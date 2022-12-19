@@ -30,7 +30,7 @@ private:
     int longeur;
     void positionRobot(std::string& terrain_ligne, std::vector<Robot>& robots);
     std::string textFormat(const std::string& strIn);
-    std::string terrain[largeur];
+    std::string terrain;
 
 };
 
