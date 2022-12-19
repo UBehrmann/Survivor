@@ -1,6 +1,12 @@
-//
-// Created by ursbe on 12.12.2022.
-//
+// PRG1_E
+//---------------------------------------------------------------------------------
+// Fichier        : Terrain.cpp
+// Auteur(s)      : Sirak Mussie et Urs Behrmann
+// But            :
+// Modifications  :
+// Remarque(s)    : NILL
+// Compilateur    : MinGW w64 9.0 / C++20
+//---------------------------------------------------------------------------------
 
 #ifndef SURVIVOR_COORDONNEE_H
 #define SURVIVOR_COORDONNEE_H
@@ -15,11 +21,7 @@ public:
 
     int getX() const;
 
-    void setX(int x);
-
     int getY() const;
-
-    void setY(int y);
 
     void operator+=(const Coordonnee c);
 
@@ -27,6 +29,5 @@ private:
     int x;
     int y;
 };
-
 
 #endif //SURVIVOR_COORDONNEE_H

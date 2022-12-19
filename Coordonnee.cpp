@@ -1,6 +1,12 @@
-//
-// Created by ursbe on 12.12.2022.
-//
+// PRG1_E
+//---------------------------------------------------------------------------------
+// Fichier        : Terrain.cpp
+// Auteur(s)      : Sirak Mussie et Urs Behrmann
+// But            :
+// Modifications  :
+// Remarque(s)    : NILL
+// Compilateur    : MinGW w64 9.0 / C++20
+//---------------------------------------------------------------------------------
 
 #include "Coordonnee.h"
 
@@ -8,16 +14,8 @@ int Coordonnee::getX() const {
     return x;
 }
 
-void Coordonnee::setX(int x) {
-    Coordonnee::x = x;
-}
-
 int Coordonnee::getY() const {
     return y;
-}
-
-void Coordonnee::setY(int y) {
-    Coordonnee::y = y;
 }
 
 Coordonnee::Coordonnee(int x, int y) : x(x), y(y) {}

@@ -52,32 +52,48 @@ void Terrain::positionRobot(string& terrain_ligne, vector<Robot>& robots) {
 
 Terrain::Terrain(int largeur, int longeur) : largeur(largeur + 1), longeur(longeur + 1) {}
 
-void Terrain::affiche2(std::vector<Robot>& robots){
-    string ligne2 = string((size_t)largeur + 2, BORDURE_HORIZONTAL);
+void Terrain::affiche(std::vector<Robot>& robots) const{
+
+    string ligne = string((size_t)largeur + 2, BORDURE_HORIZONTAL);
     const char START = '0';
 
-    system("cls");
+    vector<Robot>::iterator itRobot = robots.begin();
 
-    cout << ligne2 << endl;
+    // Efface le terminal pour Windows et Linux / Mac
+    if (system("cls"))
+        system("clear");
 
-    for (int ligne = 0; ligne <= longeur; ++ligne){
-        ligne2.clear();
-        ligne2 += BORDURE_VERTICAL;
-        ligne2 += string((size_t)largeur, ESPACE);
-        ligne2 += BORDURE_VERTICAL;
+    // Bordure superieure
+    cout << ligne << endl;
 
-        for (Robot r : robots) {
-            if (r.getCoordonnee().getY() == ligne - 1)
-                ligne2.at(r.getCoordonnee().getX() +1 ) = START + r.getId();
+    // Affiche une ligne du terrain
+    for (int i = 0; i <= longeur; ++i){
+
+        ligne = ligneTerrain();
+
+        // Place les robots qui sont sur cette ligne
+        while (itRobot->getCoordonnee().getY() == i - 1 && robots.end() != itRobot){
+            ligne.at((size_t)itRobot->getCoordonnee().getX() + 1) = START + (char)
+                    itRobot->getId();
+            ++itRobot;
         }
 
-        cout << ligne2 << endl;
-
+        cout << ligne << endl;
     }
 
-    ligne2 = string((size_t)largeur + 2, BORDURE_HORIZONTAL);
+    // Bordure inferieure
+    ligne = string((size_t)largeur + 2, BORDURE_HORIZONTAL);
+    cout << ligne << endl;
+}
 
-    cout << ligne2 << endl;
+string Terrain::ligneTerrain() const{
+
+    string ligne;
+    ligne += BORDURE_VERTICAL;
+    ligne += string((size_t)largeur, ESPACE);
+    ligne += BORDURE_VERTICAL;
+
+    return ligne;
 }
 
 int Terrain::getLargeur() const {

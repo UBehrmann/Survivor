@@ -14,11 +14,11 @@
 #include <iostream>
 #include <thread>
 
-
 using namespace std;
 
 Survivor::Survivor(int largueur, int longueur, int nbreObject) : terrain (Terrain(largueur,
-                                                                                  longueur)) {
+                  longueur)), NRE_OBJECT_DEBUT(nbreObject) {
+
     // reserve la place nécessaire pour nos objects robots
     robots.reserve((size_t)nbreObject);
 
@@ -27,10 +27,12 @@ Survivor::Survivor(int largueur, int longueur, int nbreObject) : terrain (Terrai
     // Cree les objects robots
     for (int i = 0; i < nbreObject; ++i) {
 
+        // Cherche une coordonnee qui n'est pas occupee par un autre robot
         do {
             coordonnee = coordonneeAleatoir(largueur, longueur);
         }while (estOccupe(coordonnee));
 
+        // Ajoute le robot au vecteur
         robots.push_back(Robot(i, coordonnee, terrain.getLargeur(), terrain.getLongeur()));
     }
 }
@@ -49,18 +51,25 @@ Coordonnee Survivor::coordonneeAleatoir(int largueur, int longueur) {
 
 void Survivor::etappe() {
 
-    // obtain a time-based seed:
-    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
-    shuffle(robots.begin(), robots.end(), default_random_engine(seed));
+    // Melange les robots
+    shuffle(robots.begin(), robots.end(), default_random_engine((unsigned)random.random(0, 1000)));
 
-
+    // Bouge chaque robot et controle, si il arrive sur une coordonnee deja occupee par un autre
+    // robot.
     for(Robot& r : robots) {
 
         controlePosition(r.deplace(random), r);
 
-        terrain.affiche2(robots);
-        cout << endl << deahtList << endl << "Robots restants: " << robots.size() << endl;
+        // Remet en ordre les robots d'apres l'axe des Y
+        sort(robots.begin(), robots.end());
 
+        // affiche le terrain
+        terrain.affiche(robots);
+
+        // Affiche le tableau des robots tuees
+        afficheTableauScore();
+
+        // Attend Xms
         this_thread::sleep_for(25ms);
     }
 }
@@ -76,24 +85,6 @@ void Survivor::controlePosition(const Coordonnee& c, const Robot& robot) {
 
 void Survivor::robotAEteTue(const Robot& robotTue, const Robot& robotSurvivant) {
     int compteur = 0;
-    const char START = '0';
-
-//    if(robotTue.getCoordonnee().getX() == robotSurvivant.getCoordonnee().getX() && robotTue.getCoordonnee().getY
-//    () == robotSurvivant.getCoordonnee().getY())
-//        cin.ignore();
-
-//    cout << "Robot tue " << robotTue.getId() << " : " << robotTue.getCoordonnee().getX() << ""
-//    " : " << robotTue.getCoordonnee() .getY() << endl;
-//
-//    cout << "Robot surivant " << robotSurvivant.getId() << " : " << robotSurvivant.getCoordonnee()
-//    .getX()
-//    << " : "
-//                                                                                             "" <<
-//    robotSurvivant
-//    .getCoordonnee().getY() << endl;
-//
-//    cin.ignore();
-
 
     for(Robot r : robots){
         if (r == robotTue)
@@ -101,14 +92,21 @@ void Survivor::robotAEteTue(const Robot& robotTue, const Robot& robotSurvivant) 
         compteur++;
     }
 
-    deahtList += START + robotSurvivant.getId();
-    deahtList += " a tue ";
-    deahtList += START + robotTue.getId();
-    deahtList += "\n";
+    aTuee[NRE_OBJECT_DEBUT - robots.size()] = { robotSurvivant.getId(), robotTue.getId()};
 
     robots.erase(robots.begin() + compteur);//find(robots.begin(), robots.end(), robotTue) );
 }
 
 bool Survivor::fin() {
     return robots.size() > 1;
+}
+
+void Survivor::afficheTableauScore() {
+
+    for (size_t i = 0; i < NRE_OBJECT_DEBUT; ++i) {
+        if(NRE_OBJECT_DEBUT ==  robots.size() || i > NRE_OBJECT_DEBUT - robots.size() - 1)
+            return;
+        cout << aTuee[i][0] << " a tue " << aTuee[i][1] << endl;
+    }
+
 }

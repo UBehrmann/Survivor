@@ -25,8 +25,6 @@ const std::vector<Coordonnee> DEPLACEMENTS_AUTORISE = {
         {-1, 0}  // Gauche
 };
 
-enum DEPLACEMENT {HAUT, DROITE, BAS, GAUCHE};
-
 class Robot {
 public:
     Robot(int iD, Coordonnee coordonnee, int limiteX, int limiteY);
@@ -42,17 +40,12 @@ public:
 
     int getId() const;
 
-    void setId(int iD);
-
     const Coordonnee &getCoordonnee() const;
-
-    void setCoordonnee(const Coordonnee &coordonnee);
 
     bool operator!=(const Robot& r) const{ return this->iD != r.getId(); }
     bool operator==(const Robot& r) const{ return this->iD == r.getId(); }
-
-    void addEgalite(int nbre){egalite += nbre;}
-    int getEgalite() const{return egalite;};
+    bool operator<(const Robot& r) const{return this->coordonnee.getY() < r.getCoordonnee().getY
+    (); }
 
 private:
 
@@ -61,9 +54,6 @@ private:
 
     int LIMITE_X;
     int LIMITE_Y;
-
-    int egalite = 0;
-
 };
 
 

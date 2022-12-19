@@ -12,11 +12,14 @@
 #define SURVIVOR_SURVIVOR_H
 
 #include <vector>
+#include <array>
 #include "Terrain.h"
 #include "Coordonnee.h"
-#include "random.h"
+#include "Random.h"
 #include "Robot.h"
 
+using Robots = std::vector<Robot>;
+using ListeTuee = std::array<std::array<int,2>, 10>;
 
 class Survivor {
 public:
@@ -27,13 +30,17 @@ public:
     bool fin();
 
 private:
-    std::vector<Robot> robots;
+    Robots robots;
 
     Terrain terrain;
 
     Random random;
 
-    std::string deahtList;
+    std::string deathList;
+
+    ListeTuee aTuee;
+
+    const size_t NRE_OBJECT_DEBUT;
 
     bool estOccupe(Coordonnee coordonnee) const;
 
@@ -42,7 +49,8 @@ private:
     void controlePosition(const Coordonnee& coordonnee, const Robot& robot);
 
     void robotAEteTue(const Robot& robotTue, const Robot& robotSurvivant);
-};
 
+    void afficheTableauScore();
+};
 
 #endif //SURVIVOR_SURVIVOR_H

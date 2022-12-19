@@ -13,6 +13,7 @@
 
 using namespace std;
 
+
 Robot::Robot(int iD, Coordonnee coordonnee, int limiteX, int limiteY) : iD(iD), coordonnee
 (coordonnee), LIMITE_X(limiteX), LIMITE_Y(limiteY) {}
 
@@ -36,14 +37,6 @@ int Robot::getId() const {
     return iD;
 }
 
-void Robot::setId(int iD) {
-    Robot::iD = iD;
-}
-
 const Coordonnee &Robot::getCoordonnee() const {
     return coordonnee;
-}
-
-void Robot::setCoordonnee(const Coordonnee &coordonnee) {
-    Robot::coordonnee = coordonnee;
 }

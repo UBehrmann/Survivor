@@ -14,17 +14,18 @@
 #include <vector>
 #include "Robot.h"
 
+const char 	BORDURE_VERTICAL = '|',
+        BORDURE_HORIZONTAL = '-',
+        ESPACE = ' ';
+
 class Terrain {
 public:
-    const char 	BORDURE_VERTICAL = '|',
-            BORDURE_HORIZONTAL = '-',
-            ESPACE = ' ';
 
     Terrain(int largeur, int longeur);
     void affiche(std::vector<Robot>& robots);
     void initializerTerrain(std::vector<Robot>& robots);
 
-    void affiche2(std::vector<Robot> &robots);
+    void affiche(std::vector<Robot>& robots) const;
 
     int getLargeur() const;
 
