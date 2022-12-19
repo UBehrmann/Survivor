@@ -60,7 +60,7 @@ void Terrain::affiche2(std::vector<Robot>& robots){
 
     cout << ligne2 << endl;
 
-    for (int ligne = 0; ligne <= largeur; ++ligne){
+    for (int ligne = 0; ligne <= longeur; ++ligne){
         ligne2.clear();
         ligne2 += BORDURE_VERTICAL;
         ligne2 += string((size_t)largeur, ESPACE);
@@ -78,4 +78,12 @@ void Terrain::affiche2(std::vector<Robot>& robots){
     ligne2 = string((size_t)largeur + 2, BORDURE_HORIZONTAL);
 
     cout << ligne2 << endl;
+}
+
+int Terrain::getLargeur() const {
+    return largeur-1;
+}
+
+int Terrain::getLongeur() const {
+    return longeur-1;
 }

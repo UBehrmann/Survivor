@@ -29,7 +29,7 @@ enum DEPLACEMENT {HAUT, DROITE, BAS, GAUCHE};
 
 class Robot {
 public:
-    Robot(int iD, Coordonnee coordonnee);
+    Robot(int iD, Coordonnee coordonnee, int limiteX, int limiteY);
 
     //---------------------------------------------------------------------------------
     // nom         deplace
@@ -58,6 +58,9 @@ private:
 
     int iD;
     Coordonnee coordonnee;
+
+    int LIMITE_X;
+    int LIMITE_Y;
 
     int egalite = 0;
 

@@ -13,7 +13,8 @@
 
 using namespace std;
 
-Robot::Robot(int iD, Coordonnee coordonnee) : iD(iD), coordonnee(coordonnee){}
+Robot::Robot(int iD, Coordonnee coordonnee, int limiteX, int limiteY) : iD(iD), coordonnee
+(coordonnee), LIMITE_X(limiteX), LIMITE_Y(limiteY) {}
 
 Coordonnee Robot::deplace(Random& random) {
 
@@ -24,7 +25,7 @@ Coordonnee Robot::deplace(Random& random) {
 
         c += coordonnee;
 
-    } while (c.getX() < 0 || c.getX() > 10 || c.getY() < 0 || c.getY() > 10);
+    } while (c.getX() < 0 || c.getX() > LIMITE_X || c.getY() < 0 || c.getY() > LIMITE_Y);
 
     coordonnee = c;
 

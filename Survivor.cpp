@@ -31,7 +31,7 @@ Survivor::Survivor(int largueur, int longueur, int nbreObject) : terrain (Terrai
             coordonnee = coordonneeAleatoir(largueur, longueur);
         }while (estOccupe(coordonnee));
 
-        robots.push_back(Robot(i, coordonnee));
+        robots.push_back(Robot(i, coordonnee, terrain.getLargeur(), terrain.getLongeur()));
     }
 }
 
@@ -53,40 +53,16 @@ void Survivor::etappe() {
     unsigned seed = chrono::system_clock::now().time_since_epoch().count();
     shuffle(robots.begin(), robots.end(), default_random_engine(seed));
 
-    //Random::melangeRobots(robots);
-
-    static int compteurTour = 0;
-    compteurTour++;
-
-    int compteur = 1;
 
     for(Robot& r : robots) {
 
-//        r.addEgalite(compteur * compteurTour);
-//
-//        compteur++;
+        controlePosition(r.deplace(random), r);
 
         terrain.affiche2(robots);
         cout << endl << deahtList << endl << "Robots restants: " << robots.size() << endl;
-//        cout << "Robot: " << r.getId() << " va bouger." << endl;
 
         this_thread::sleep_for(25ms);
-
-        controlePosition(r.deplace(random), r);
     }
-
-//    float moyenne = 0;
-//
-//    for (Robot rs : robots) {
-//        cout << "Robot " << rs.getId() << " : " << rs.getEgalite() << endl;
-//        moyenne += rs.getEgalite();
-//    }
-//
-//    moyenne = moyenne / robots.size();
-//
-//    cout << "Moyenne: " << moyenne << endl;
-//
-//    this_thread::sleep_for(1000);
 }
 
 void Survivor::controlePosition(const Coordonnee& c, const Robot& robot) {

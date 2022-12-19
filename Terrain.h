@@ -26,6 +26,9 @@ public:
 
     void affiche2(std::vector<Robot> &robots);
 
+    int getLargeur() const;
+
+    int getLongeur() const;
 
 private:
     int largeur;
