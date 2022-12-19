@@ -19,14 +19,14 @@ using namespace std;
 void Terrain::initializerTerrain(vector<Robot>& robots){
     //return le terrain
 
-    for (int ligne; ligne <= largeur; ++ligne){
-        if (ligne == 0 or ligne == largeur) {
-            terrain[ligne] = string(largeur + 2, BORDURE_HORIZONTAL); //setw 2
-        } else {
-            terrain[ligne] = textFormat(string(largeur, ESPACE));
-
-        }
-    }
+//    for (int ligne; ligne <= largeur; ++ligne){
+//        if (ligne == 0 or ligne == largeur) {
+//            terrain[ligne] = string(largeur + 2, BORDURE_HORIZONTAL); //setw 2
+//        } else {
+//            terrain[ligne] = textFormat(string(largeur, ESPACE));
+//
+//        }
+//    }
     positionRobot(terrain, robots);
 
 
@@ -46,8 +46,35 @@ string Terrain::textFormat(const string& strIn) {
 
 void Terrain::positionRobot(string& terrain_ligne, vector<Robot>& robots) {
     for (const Robot& r : robots){
-        terrain_ligne[(r.getCoordonnee().getX())].replace((r.getCoordonnee().getY()), r.getId());
+//        terrain_ligne[(r.getCoordonnee().getX())].replace((r.getCoordonnee().getY()), r.getId());
     }
 }
 
 Terrain::Terrain(int largeur, int longeur) : largeur(largeur), longeur(longeur) {}
+
+void Terrain::affiche2(std::vector<Robot>& robots){
+    string ligne2 = string((size_t)largeur + 2, BORDURE_HORIZONTAL);
+    char start = '0';
+
+    system("cls");
+
+    cout << ligne2 << endl;
+
+    for (int ligne = 0; ligne <= largeur; ++ligne){
+        ligne2 = string(largeur + 2, ESPACE);
+        ligne2[0] = BORDURE_VERTICAL;
+        ligne2[largeur + 1] = BORDURE_VERTICAL;
+
+        for (Robot r : robots) {
+            if (r.getCoordonnee().getY() == ligne - 1)
+                ligne2.at(r.getCoordonnee().getX()+1) = start + r.getId();
+        }
+
+        cout << ligne2 << endl;
+
+    }
+
+    ligne2 = string((size_t)largeur + 2, BORDURE_HORIZONTAL);
+
+    cout << ligne2 << endl;
+}

@@ -24,6 +24,8 @@ public:
     void affiche(std::vector<Robot>& robots);
     void initializerTerrain(std::vector<Robot>& robots);
 
+    void affiche2(std::vector<Robot> &robots);
+
 
 private:
     int largeur;
@@ -31,6 +33,7 @@ private:
     void positionRobot(std::string& terrain_ligne, std::vector<Robot>& robots);
     std::string textFormat(const std::string& strIn);
     std::string terrain;
+
 
 };
 

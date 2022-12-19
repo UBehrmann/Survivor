@@ -10,8 +10,23 @@
 //---------------------------------------------------------------------------------
 
 #include <iostream>
+#include "Survivor.h"
+#include <limits>               // Utilisation de numeric limits
+#include <thread>
+
+#define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
+
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Survivor survivor(20, 20, 5);
+
+    while (true){
+
+        survivor.etappe();
+
+        this_thread::sleep_for(100ms);
+    }
+
     return 0;
 }
