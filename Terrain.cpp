@@ -11,8 +11,10 @@
 #include "Terrain.h"
 #include "Robot.h"
 #include <iostream>
-using namespace std;
+#include <string>
 
+
+using namespace std;
 
 void Terrain::initializerTerrain(vector<Robot>& robots){
     //return le terrain
