@@ -10,6 +10,7 @@
 
 #ifndef SURVIVOR_ANNEXE_H
 #define SURVIVOR_ANNEXE_H
+
 #include <string>
 /**
      * @name saisie

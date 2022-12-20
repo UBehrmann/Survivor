@@ -14,11 +14,15 @@
 using namespace std;
 
 Random::Random() {
+
+    std::random_device rand_dev;
+
     default_random_engine generator(rand_dev());
     this->generator = generator;
 }
 
 int Random::random(int min, int max) {
+
     uniform_int_distribution<int>  distr(min, max);
 
     // une valeur entre min et max compris

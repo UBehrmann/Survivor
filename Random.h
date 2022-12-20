@@ -35,8 +35,7 @@ public:
 private:
 
     // Variables prives de la classe
-    std::random_device                  rand_dev;
-    std::default_random_engine          generator;
+    std::default_random_engine generator;
 
 };
 
