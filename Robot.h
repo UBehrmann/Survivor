@@ -43,9 +43,9 @@ public:
     Robot(int iD, Coordonnee coordonnee, int limiteX, int limiteY);
 
     /**
-     * @name 				: deplace
+     * @name 			: deplace
      *
-     * @but 				: Deplace le robot dans une direction aleatoir.
+     * @but 			: Deplace le robot dans une direction aleatoir.
      *
      * @param random    : Class generateur de chiffre aleatoire crée par la classe Survivor
      * @return          : void
@@ -54,12 +54,12 @@ public:
     void deplace(Random& random);
 
     /**
-     * @name 	  : getId
+     * @name    : getId
      *
-     * @but 	  : Retour l'iD du robot
-     * @param	  :
-     * @return   : L'iD du robot
-     * @throws   : NIL
+     * @but     : Retour l'iD du robot
+     * @param   :
+     * @return  : L'iD du robot
+     * @throws  : NIL
      */
     int getId() const;
 
@@ -74,10 +74,10 @@ public:
     const Coordonnee &getCoordonnee() const;
 
     /**
-     * @name 	  : operator==
+     * @name 	 : operator==
      *
-     * @but 	  : Operateur == pour comparer deux classe robots
-     * @param    :
+     * @but 	 : Operateur == pour comparer deux classe robots
+     * @param r  : Robot avec lequel ce robot va être compare
      * @return   : Vrai, si les deux robots comparer sont les mêmes
      * @throws   : NIL
      */

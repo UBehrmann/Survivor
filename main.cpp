@@ -20,20 +20,25 @@ using namespace std;
 
 int main() {
 
+    const int MIN_TERRAIN = 10;
+    const int MAX_TERRAIN = 1000;
+    const int MIN_NBRE_OBJECTS = 1;
+    const int MAX_NBRE_OBJECTS = 10;
+
     // Saisie des parametres du jeu
-    int longeur = saisie("ce programme...", "Longeur", 10, 1000, "La valeur n'est pas dans les limites indiquees!");
-    int largeur = saisie("Largeur", 10, 1000, "La valeur n'est pas dans les limites indiquees!");
-    int nbreObjects = saisie("Nbre objects", 1, 10, "La valeur n'est pas dans les limites indiquees!");
+    int longeur = saisieIntro("ce programme...", "Longeur", MIN_TERRAIN, MAX_TERRAIN);
+    int largeur = saisie("Largeur", MIN_TERRAIN, MAX_TERRAIN);
+    int nbreObjects = saisie("Nbre objects", MIN_NBRE_OBJECTS, MAX_NBRE_OBJECTS);
 
     // Initialisation du "Game master"
     Survivor survivor(longeur, largeur, nbreObjects);
 
-    // boucle de jeu
+    // boucle de jeu, tant que >1 robots sont en vie
     do{
 
         survivor.etappe();
 
-    }while ( survivor.fin() );
+    }while ( survivor() );
 
 
     // Fin du programme

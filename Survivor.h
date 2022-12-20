@@ -51,14 +51,14 @@ public:
     void etappe();
 
     /**
-     * @name fin
+     * @name operator()
      *
      * Fonction qui retour faux pour signifier la fin du jeu, lorsque plus qu'un robot est sur le terrain
      *
      * @return              : Faux, s'il n'y a plus qu'un robot, sinon vrai.
      * @throws              : NIL
      */
-    bool fin();
+     bool operator() (){ return robots.size() > 1; };
 
 private:
 

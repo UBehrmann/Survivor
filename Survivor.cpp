@@ -103,10 +103,6 @@ void Survivor::robotAEteTue(const Robot& robotTue, const Robot& robotSurvivant) 
     robots.erase(robots.begin() + compteur);//find(robots.begin(), robots.end(), robotTue) );
 }
 
-bool Survivor::fin() {
-    return robots.size() > 1;
-}
-
 void Survivor::afficheTableauScore() {
 
     for (size_t i = 0; i < NRE_OBJECT_DEBUT; ++i) {
