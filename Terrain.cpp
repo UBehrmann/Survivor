@@ -27,8 +27,14 @@ void Terrain::affiche(std::vector<Robot>& robots) const{
     vector<Robot>::iterator itRobot = robots.begin();
 
     // Efface le terminal pour Windows et Linux / Mac
-    if (system("cls"))
-        system("clear");
+    #if defined(_WIN32) && defined(_WIN64)
+		 system("cls");
+	 #else //defined(__linux__)
+		 system("clear");
+	 #endif
+
+
+
 
     // Bordure superieure
     cout << ligne << endl;
