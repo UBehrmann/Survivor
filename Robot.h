@@ -29,9 +29,9 @@ const std::vector<Coordonnee> DEPLACEMENTS_AUTORISE = {
 class Robot {
 public:
     /**
-     * @name Robot
+     * @name 					 : Robot
      *
-     * Constructeur de l'objet robot
+     * @but 					 : Constructeur de l'objet robot
      *
      * @param iD            : iD du robot
      * @param coordonnee    : Coordonnee de creation du robot
@@ -43,9 +43,9 @@ public:
     Robot(int iD, Coordonnee coordonnee, int limiteX, int limiteY);
 
     /**
-     * @name deplace
+     * @name 				: deplace
      *
-     * Deplace le robot dans une direction aleatoir.
+     * @but 				: Deplace le robot dans une direction aleatoir.
      *
      * @param random    : Class generateur de chiffre aleatoire crée par la classe Survivor
      * @return          : void
@@ -54,30 +54,30 @@ public:
     void deplace(Random& random);
 
     /**
-     * @name getId
+     * @name 	  : getId
      *
-     * Retour l'iD du robot
-     *
+     * @but 	  : Retour l'iD du robot
+     * @param	  :
      * @return   : L'iD du robot
      * @throws   : NIL
      */
     int getId() const;
 
     /**
-     * @name getCoordonnee
+     * @name 	  : getCoordonnee
      *
-     * Retour les Coordonnee du robot
-     *
+     * @but 	  : Retour les Coordonnee du robot
+     * @param	  :
      * @return   : Un objet Coordonnee qui est la position du robot sur le terrain
      * @throws   : NIL
      */
     const Coordonnee &getCoordonnee() const;
 
     /**
-     * @name operator==
+     * @name 	  : operator==
      *
-     * Operateur == pour comparer deux classe robots
-     *
+     * @but 	  : Operateur == pour comparer deux classe robots
+     * @param    :
      * @return   : Vrai, si les deux robots comparer sont les mêmes
      * @throws   : NIL
      */

@@ -12,6 +12,8 @@
 #define SURVIVOR_ANNEXE_H
 
 #include <string>
+
+const std::string MSG_ERROR = "La valeur n'est pas dans les limites indiquees!";
 /**
      * @name saisie
      *
@@ -22,7 +24,8 @@
      * @return un nombre aléatoire dans l'interval [min, max]
      * @throws NIL
      */
-int saisie(const std::string& MSG, const int MIN, const int MAX, const std::string& MSG_ERROR);
+int saisie(const std::string& MSG, int MIN, int MAX, const std::string&
+MSG_ERREUR = MSG_ERROR);
 
 /**
      * @name saisie
@@ -34,7 +37,7 @@ int saisie(const std::string& MSG, const int MIN, const int MAX, const std::stri
      * @return un nombre aléatoire dans l'interval [min, max]
      * @throws NIL
      */
-int saisie(const std::string& MSG_INTRO, const std::string& MSG, const int MIN, const int MAX,
+int saisie(const std::string& MSG_INTRO, const std::string& MSG, int MIN, int MAX,
            const std::string& MSG_ERROR);
 
 #endif //SURVIVOR_ANNEXE_H
