@@ -20,13 +20,15 @@ using namespace std;
 
 int main() {
 
-    int longeur = saisie("Longeur", 10, 1000, "La valeur n'est pas dans les limites indiquees!");
+    // Saisie des parametres du jeu
+    int longeur = saisie("ce programme...", "Longeur", 10, 1000, "La valeur n'est pas dans les limites indiquees!");
     int largeur = saisie("Largeur", 10, 1000, "La valeur n'est pas dans les limites indiquees!");
-    int nbreObjects = saisie("Nbre objects", 10, 1000, "La valeur n'est pas dans les limites indiquees!");
+    int nbreObjects = saisie("Nbre objects", 1, 10, "La valeur n'est pas dans les limites indiquees!");
 
-
+    // Initialisation du "Game master"
     Survivor survivor(longeur, largeur, nbreObjects);
 
+    // boucle de jeu
     do{
 
         survivor.etappe();
@@ -34,7 +36,8 @@ int main() {
     }while ( survivor.fin() );
 
 
-    cout << "Pressez ENTER pour quitter";
+    // Fin du programme
+    cout << endl << "Pressez ENTER pour quitter";
     VIDER_BUFFER;
 
     return EXIT_SUCCESS;

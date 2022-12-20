@@ -30,7 +30,7 @@ int saisie(const string& MSG, const int MIN, const int MAX, const string& MSG_ER
     bool erreur;
     int saisie;
     do {
-        cout << MSG << " [" << MIN << ".." << "]" << " :";
+        cout << MSG << " [" << MIN << ".." << MAX << "]" << " :";
         cin >> saisie;
         erreur = cin.fail() or !(saisie >= MIN && saisie <= MAX);
 
@@ -51,7 +51,7 @@ MSG_ERROR) {
     bool erreur;
     int saisie;
     do {
-        cout << MSG << " [" << MIN << ".." << "]" << " :";
+        cout << MSG << " [" << MIN << ".." << MAX << "]" << " :";
         cin >> saisie;
         erreur = cin.fail() or !(saisie >= MIN && saisie <= MAX);
 
