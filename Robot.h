@@ -16,7 +16,7 @@
 #include <vector>
 
 /**
- * Les déplacements relatifs autorisé de la tondeuse
+ * Les déplacements relatifs autorisé d'un robot
  */
 const std::vector<Coordonnee> DEPLACEMENTS_AUTORISE = {
         {0, -1}, // Haut
@@ -27,28 +27,58 @@ const std::vector<Coordonnee> DEPLACEMENTS_AUTORISE = {
 
 class Robot {
 public:
+    /**
+     * @name Robot
+     *
+     * Constructeur de l'objet robot
+     *
+     * @param iD            : ID du robot
+     * @param coordonnee    : Coordonnee de creation du robot
+     * @param limiteX       : Limite x du terrain
+     * @param limiteY       : Limite y du terrain
+     * @return              : void
+     * @throws              : NIL
+     */
     Robot(int iD, Coordonnee coordonnee, int limiteX, int limiteY);
 
-    //---------------------------------------------------------------------------------
-    // nom         deplace
-    // but         But de la fonction
-    // param       Paramètre envoyer à la fonction
-    // return      valeur retourné par la fonction
-    // exception   n/a
-    //---------------------------------------------------------------------------------
-    Coordonnee deplace(Random& random);
+    /**
+     * @name deplace
+     *
+     * Deplace le robot dans une direction aleatoir.
+     *
+     * @param random    : Class generateur de chiffre aleatoire crée par la classe Survivor
+     * @return          : void
+     * @throws          : NIL
+     */
+    void deplace(Random& random);
 
+    /**
+     * @name getId
+     *
+     * Retour l'ID du robot
+     *
+     * @return   : L'ID du robot
+     * @throws   : NIL
+     */
     int getId() const;
 
+    /**
+     * @name getCoordonnee
+     *
+     * Retour les Coordonnee du robot
+     *
+     * @return   : Un objet Coordonnee qui est la position du robot sur le terrain
+     * @throws   : NIL
+     */
     const Coordonnee &getCoordonnee() const;
 
     bool operator!=(const Robot& r) const{ return this->iD != r.getId(); }
     bool operator==(const Robot& r) const{ return this->iD == r.getId(); }
-    bool operator<(const Robot& r) const{return this->coordonnee.getY() < r.getCoordonnee().getY
-    (); }
+    bool operator<(const Robot& r) const{return this->coordonnee.getY() < r.getCoordonnee().getY(); }
 
 private:
 
+    // Variables prives de la classe
     int iD;
     Coordonnee coordonnee;
 

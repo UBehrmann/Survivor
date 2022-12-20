@@ -2,7 +2,8 @@
 //---------------------------------------------------------------------------------
 // Fichier        : Terrain.cpp
 // Auteur(s)      : Sirak Mussie et Urs Behrmann
-// But            :
+// But            : Classe qui represente le terrain de jeu et qui peut afficher
+//                  celui-ci dans la console.
 // Modifications  :
 // Remarque(s)    : NILL
 // Compilateur    : MinGW w64 9.0 / C++20
@@ -16,11 +17,11 @@
 
 using namespace std;
 
-Terrain::Terrain(int largeur, int longeur) : largeur(largeur + 1), longeur(longeur + 1) {}
+Terrain::Terrain(int largeur, int longeur) : LARGEUR(largeur + 1), LONGEUR(longeur + 1) {}
 
 void Terrain::affiche(std::vector<Robot>& robots) const{
 
-    string ligne = string((size_t)largeur + 2, BORDURE_HORIZONTAL);
+    string ligne = string((size_t)LARGEUR + 2, BORDURE_HORIZONTAL);
     const char START = '0';
 
     vector<Robot>::iterator itRobot = robots.begin();
@@ -33,9 +34,9 @@ void Terrain::affiche(std::vector<Robot>& robots) const{
     cout << ligne << endl;
 
     // Affiche une ligne du terrain
-    for (int i = 0; i <= longeur; ++i){
+    for (int i = 0; i <= LONGEUR; ++i){
 
-        ligne = ligneTerrain();
+        ligne = ligneTerrainVide();
 
         // Place les robots qui sont sur cette ligne
         while (itRobot->getCoordonnee().getY() == i - 1 && robots.end() != itRobot){
@@ -48,24 +49,24 @@ void Terrain::affiche(std::vector<Robot>& robots) const{
     }
 
     // Bordure inferieure
-    ligne = string((size_t)largeur + 2, BORDURE_HORIZONTAL);
+    ligne = string((size_t)LARGEUR + 2, BORDURE_HORIZONTAL);
     cout << ligne << endl;
 }
 
-string Terrain::ligneTerrain() const{
+string Terrain::ligneTerrainVide() const{
 
     string ligne;
     ligne += BORDURE_VERTICAL;
-    ligne += string((size_t)largeur, ESPACE);
+    ligne += string((size_t)LARGEUR, ESPACE);
     ligne += BORDURE_VERTICAL;
 
     return ligne;
 }
 
 int Terrain::getLargeur() const {
-    return largeur-1;
+    return LARGEUR - 1;
 }
 
 int Terrain::getLongeur() const {
-    return longeur-1;
+    return LONGEUR - 1;
 }

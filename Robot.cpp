@@ -13,24 +13,25 @@
 
 using namespace std;
 
-
+// Constructeur
 Robot::Robot(int iD, Coordonnee coordonnee, int limiteX, int limiteY) : iD(iD), coordonnee
 (coordonnee), LIMITE_X(limiteX), LIMITE_Y(limiteY) {}
 
-Coordonnee Robot::deplace(Random& random) {
+void Robot::deplace(Random& random) {
 
-    Coordonnee c;
+    Coordonnee coordonneTmp;
 
+    // Cherche un deplacement autorisé pour le robot
     do {
-        c = DEPLACEMENTS_AUTORISE[(size_t)random.random(0,3)];
+        coordonneTmp = DEPLACEMENTS_AUTORISE[(size_t)random.random(0, 3)];
 
-        c += coordonnee;
+        coordonneTmp += coordonnee;
 
-    } while (c.getX() < 0 || c.getX() > LIMITE_X || c.getY() < 0 || c.getY() > LIMITE_Y);
+    } while (coordonneTmp.getX() < 0 || coordonneTmp.getX() > LIMITE_X ||
+                coordonneTmp.getY() < 0 || coordonneTmp.getY() > LIMITE_Y);
 
-    coordonnee = c;
-
-    return c;
+    // Set la nouvelle position au robot
+    coordonnee = coordonneTmp;
 }
 
 int Robot::getId() const {

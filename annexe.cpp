@@ -18,7 +18,7 @@ using namespace std;
 
 const string MSG_INTRO = "ce programme ...";
 const string MSG_ERROR = "";
-//largeur [10..1000] : 20
+//LARGEUR [10..1000] : 20
 //hauteur [10..1000] : 10
 //nbre object [0..9] : 9
 const int MIN_TAILE = 10,

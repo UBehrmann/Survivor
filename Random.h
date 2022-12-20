@@ -12,9 +12,7 @@
 #define SURVIVOR_RANDOM_H
 
 #include <random> // random_device
-//#include "Robot.h"
 
-//using Robots = std::vector<Robot>;
 
 // Adapter de la démo : https://github.com/gmbreguet/PRG1_DEMO/blob/dccd145b3e99101c98de2d9a87ff05db386e2500/04_Fonctions/04_static_srand.cpp#L36
 class Random {
@@ -33,11 +31,9 @@ public:
      */
     int random(int min, int max);
 
-
-    // pris de https://cplusplus.com/reference/algorithm/shuffle/
-//    static void melangeRobots(Robots& robots);
-
 private:
+
+    // Variables prives de la classe
     std::random_device                  rand_dev;
     std::default_random_engine          generator;
 
