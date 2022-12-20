@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Survivor.h"
 #include <limits>               // Utilisation de numeric limits
+#include "annexe.h"
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
@@ -19,7 +20,12 @@ using namespace std;
 
 int main() {
 
-    Survivor survivor(10, 10, 10);
+    int longeur = saisie("Longeur", 10, 1000, "La valeur n'est pas dans les limites indiquees!");
+    int largeur = saisie("Largeur", 10, 1000, "La valeur n'est pas dans les limites indiquees!");
+    int nbreObjects = saisie("Nbre objects", 10, 1000, "La valeur n'est pas dans les limites indiquees!");
+
+
+    Survivor survivor(longeur, largeur, nbreObjects);
 
     do{
 

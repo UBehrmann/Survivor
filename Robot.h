@@ -2,7 +2,8 @@
 //---------------------------------------------------------------------------------
 // Fichier        : Robot.h
 // Auteur(s)      : Sirak Mussie et Urs Behrmann
-// But            :
+// But            : Classe robot qui contient la coordonnee, l'iD du robot et qui
+//                  le deplace dans une direction aleatoire
 // Modifications  :
 // Remarque(s)    : NILL
 // Compilateur    : MinGW w64 9.0 / C++20
@@ -32,7 +33,7 @@ public:
      *
      * Constructeur de l'objet robot
      *
-     * @param iD            : ID du robot
+     * @param iD            : iD du robot
      * @param coordonnee    : Coordonnee de creation du robot
      * @param limiteX       : Limite x du terrain
      * @param limiteY       : Limite y du terrain
@@ -55,9 +56,9 @@ public:
     /**
      * @name getId
      *
-     * Retour l'ID du robot
+     * Retour l'iD du robot
      *
-     * @return   : L'ID du robot
+     * @return   : L'iD du robot
      * @throws   : NIL
      */
     int getId() const;
@@ -72,8 +73,24 @@ public:
      */
     const Coordonnee &getCoordonnee() const;
 
-    bool operator!=(const Robot& r) const{ return this->iD != r.getId(); }
+    /**
+     * @name operator==
+     *
+     * Operateur == pour comparer deux classe robots
+     *
+     * @return   : Vrai, si les deux robots comparer sont les mêmes
+     * @throws   : NIL
+     */
     bool operator==(const Robot& r) const{ return this->iD == r.getId(); }
+
+    /**
+     * @name operator<
+     *
+     * Operateur < qui compare la position y du robot avec un autre
+     *
+     * @return   : Retourne vrai si le robot comparé a une position y plus haute
+     * @throws   : NIL
+     */
     bool operator<(const Robot& r) const{return this->coordonnee.getY() < r.getCoordonnee().getY(); }
 
 private:
@@ -82,8 +99,8 @@ private:
     int iD;
     Coordonnee coordonnee;
 
-    int LIMITE_X;
-    int LIMITE_Y;
+    int limiteX;
+    int limiteY;
 };
 
 

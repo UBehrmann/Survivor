@@ -2,7 +2,8 @@
 //---------------------------------------------------------------------------------
 // Fichier        : Random.h
 // Auteur(s)      : Sirak Mussie et Urs Behrmann
-// But            :
+// But            : Classe permettant de générer un nombre aléatoire dans l'interval
+//                  [min, max]
 // Modifications  :
 // Remarque(s)    : NILL
 // Compilateur    : MinGW w64 9.0 / C++20
